@@ -4,7 +4,7 @@ const HeroImg = "https://i.pinimg.com/736x/3d/3b/f1/3d3bf1f13bc997907db8aa68e4ab
 const Hero = () => {
   return (
     <>
-      <div className="flex flex-row items-center lg:px-50 pt-60 pb-10 px-5 sm:h-screen h-full w-full">
+      <div className="flex flex-row items-center lg:px-50 sm:pt-0 sm:pb-0 pt-60 pb-10 px-5 sm:h-screen h-full w-full">
         <div className="h-auto sm:w-3/5 w-full">
           <div className="flex flex-col justify-between sm:gap-6 gap-2">
             <h1 className="text-white font-bold sm:text-6xl text-3xl">Hi!</h1>
