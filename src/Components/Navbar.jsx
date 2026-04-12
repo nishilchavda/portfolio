@@ -1,28 +1,104 @@
-import React from "react";
+import { Menu } from "lucide-react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [active, setActive] = useState("Home");
+
+  const activeStyle =
+    "inset-0 w-full h-full z-0 rounded-full transition-all duration-300 shadow-[inset_0px_0px_20px_-5px_rgba(255,255,255,0.9)] bg-[rgba(255, 255, 255, 0.04)] ring-2 ring-white/60 ring-inset px-4 py-2 font-bold";
+  const inactiveStyle = "inset-0 w-full h-full z-0 rounded-full px-4 py-2 font-bold";
+
+  const navLinks = [
+    { name: "Home", to: "/" },
+    { name: "Projects", to: "/projects" },
+    { name: "About", to: "/about" },
+    { name: "Contact", to: "/contact" },
+  ];
+
+  const [toggleMenu, settoggleMenu] = useState(false);
+
+  const handleToggleMenu = () => {
+    settoggleMenu(!toggleMenu);
+  };
+
   return (
     <>
-      <div className="w-full flex items-center justify-between px-5 py-4 text-white ">
+      {/* navbar  */}
+      <nav className="fixed w-full hidden md:flex items-center justify-between lg:px-48 px-5 py-4 text-white ">
         <h1 className="text-2xl font-bold px-2">Nishil Chavda</h1>
-        <ul className="list-none flex items-center justify-between gap-10 select-none">
-          <Link to="/">Home</Link>
-          <Link to="/projects">Projects</Link>
-          {/* className="active:shadow-[inset_0px_0px_20px_-5px_rgba(0,50,200)]" */}
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/resume">Resume</Link>
+        <ul
+          className={`list-none flex items-center justify-between gap-10 select-none ${toggleMenu ? "block" : "hidden"} md:flex`}
+        >
+          {navLinks.map((link) => {
+            return (
+              <Link
+                to={link.to}
+                onClick={() => setActive(link.name)}
+                className={link.name === active ? activeStyle : inactiveStyle}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+
+          {/* inset-0 w-full h-full z-0 rounded-full pointer-events-none shadow-[inset_0px_0px_20px_-5px_rgba(255,255,255,0.7)] bg-[rgba(255, 255, 255, 0.04)] border border-white/70 px-3 py-2 */}
         </ul>
-        <h2 className="bg-radial from-green-800  from-1% to-green-900*2 border border-green-700 px-4 py-2 rounded-full font-bold">
+        {/* <h2 className="bg-radial from-green-800  from-1% to-green-900*2 border-2 border-green-700 px-4 py-2 rounded-full font-bold">
           MERN Stack Developer
-        </h2>
-      </div>
-      {/* <button className="isolate bg-transparent relative overflow-hidden border-none outline-none select-none flex items-center justify-center font-semibold transition-all duration-150 cursor-pointer px-6 py-3 text-base border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 24px;">
-        <span className="absolute inset-0 w-full h-full z-0 rounded-full pointer-events-none shadow-[inset_0px_0px_20px_-5px_rgba(255,255,255,0.7)] bg-[rgba(255, 255, 255, 0.04)]"></span>
-        <span className="absolute inset-0 w-full h-full z-[-1] rounded-full pointer-events-none isolate backdrop-blur-[2px]"></span>
-        <span className="relative text-white font-bold">small Button</span>
-      </button> */}
+        </h2> */}
+      </nav>
+
+      {/* hamburger  */}
+      <nav className="w-full md:hidden flex items-center justify-between pl-3 pr-4 py-4 gap-2 text-white ">
+        <h1 className="text-2xl font-bold px-2">Nishil Chavda</h1>
+        {/* <h2 className="bg-radial from-green-800 from-1% to-green-900*2 border-2 border-green-700 px-3 py-2 rounded-full text-sm font-semibold">
+          MERN Stack Developer
+        </h2> */}
+        <button className="md:hidden" onClick={handleToggleMenu}>
+          <Menu className="text-white" />
+        </button>
+      </nav>
+
+      {/* sidebar */}
+
+      {toggleMenu && (
+        <section className="md:hidden relative flex justify-end">
+          <div className="w-4/5 z-20 bg-transparent backdrop-blur-xl h-screen fixed top-0 flex items-center justify-center">
+            {/* close button  */}
+            <div>
+              <button
+                onClick={handleToggleMenu}
+                className="text-white text-4xl top-10 right-10 absolute"
+              >
+                &times;
+              </button>
+            </div>
+
+            <div className="flex items-center justify-center text-white">
+              {/* links  */}
+
+              <ul className="flex flex-col items-center text-center justify-center gap-2 text-xl">
+                {navLinks.map((link) => {
+                  return (
+                    <Link
+                      to={link.to}
+                      onClick={() => {
+                        setActive(link.name);
+                      }}
+                      className={
+                        link.name === active ? activeStyle : inactiveStyle
+                      }
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 };

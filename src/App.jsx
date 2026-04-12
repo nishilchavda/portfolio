@@ -5,8 +5,8 @@ import Home from "./Pages/Home";
 import Projects from "./Pages/Projects";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
-import Resume from "./Pages/Resume";
 import Footer from "./Components/Footer";
+import AuroraShader from "./Components/lightswind/aurora-shader";
 
 const App = () => {
   return (
@@ -18,7 +18,6 @@ const App = () => {
           <Route path="/projects" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/resume" element={<Resume />} />
         </Routes>
         <Footer />
       </div>
