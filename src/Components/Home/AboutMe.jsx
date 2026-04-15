@@ -6,7 +6,7 @@ const AboutMe = () => {
   return (
     <>
       <div className="lg:px-50 py-15 px-5 sm:h-screen h-full w-full">
-        <h1 className="text-white sm:text-4xl text-3xl font-bold text-center sm:py-15 py-8">
+        <h1 className="text-white sm:text-4xl text-3xl font-bold text-center sm:pb-15 pb-8">
           About Me
         </h1>
         {/* for laptop and tablet  */}
