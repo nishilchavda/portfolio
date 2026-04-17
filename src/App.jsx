@@ -1,11 +1,12 @@
 import React from "react";
-import Navbar from "./Components/Navbar";
-import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
-import Projects from "./Pages/Projects";
-import About from "./Pages/About";
-import Contact from "./Pages/Contact";
+import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import { Route, Routes } from "react-router-dom";
+import AboutMe from "./Components/Home/AboutMe";
+import Projects from "./Components/Home/Projects";
+import Education from "./Components/Home/Education";
+import Contact from "./Components/Home/Contact";
 
 const App = () => {
   return (
@@ -25,8 +26,9 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutMe />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/education" element={<Education />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />

@@ -11,8 +11,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", to: "/" },
-    { name: "Projects", to: "/projects" },
     { name: "About", to: "/about" },
+    { name: "Projects", to: "/projects" },
+    { name: "Education", to: "/education" },
     { name: "Contact", to: "/contact" },
   ];
 
@@ -25,17 +26,18 @@ const Navbar = () => {
   return (
     <>
       {/* navbar  */}
-      <nav className="fixed w-full hidden md:flex items-center justify-between lg:px-48 px-5 py-4 text-white ">
+      <nav className="fixed w-full hidden md:flex items-center justify-between lg:px-48 px-5 py-4 text-white z-50 ">
         <h1 className="text-2xl font-bold px-2">Nishil Chavda</h1>
         <ul
           className={`list-none flex items-center justify-between gap-10 select-none ${toggleMenu ? "block" : "hidden"} md:flex`}
         >
-          {navLinks.map((link) => {
+          {navLinks.map((link, index) => {
             return (
               <Link
                 to={link.to}
                 onClick={() => setActive(link.name)}
                 className={link.name === active ? activeStyle : inactiveStyle}
+                key={index}
               >
                 {link.name}
               </Link>

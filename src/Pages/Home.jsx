@@ -1,19 +1,20 @@
 import React from "react";
-import Navbar from "../Components/Navbar";
 import Hero from "../Components/Home/Hero";
 import AboutMe from "../Components/Home/AboutMe";
 import Skill from "../Components/Home/Skill";
-import Education from "../Components/Home/Education";
 import Projects from "../Components/Home/Projects";
+import Education from "../Components/Home/Education";
+import Contact from "../Components/Home/Contact";
 
 const Home = () => {
   return (
     <>
-      <Hero/>
-      <AboutMe/>
-      <Skill/>
-      <Projects/>
-      <Education/>
+      <Hero />
+      <AboutMe />
+      <Skill />
+      <Projects />
+      <Education />
+      <Contact />
     </>
   );
 };
