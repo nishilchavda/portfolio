@@ -5,7 +5,7 @@ import { SiGithub } from "react-icons/si";
 
 const Contact = () => {
   return (
-    <div id="contact" className="min-h-screen w-full lg:px-52 px-6 py-20 relative overflow-hidden">
+    <div id="contact" className="min-h-screen w-full xl:px-52 lg:px-38 px-6 py-20 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">

@@ -10,7 +10,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="lg:px-48 px-5 relative mt-2 border-t border-slate-900 bg-transparent backdrop-blur-2xl">
+    <footer className="xl:px-46 lg:px-36 px-5 relative mt-2 border-t border-slate-900 bg-transparent backdrop-blur-2xl">
       {/* Subtle top glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
 

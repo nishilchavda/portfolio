@@ -45,7 +45,7 @@ const Projects = () => {
 
   return (
     <>
-      <div id="projects" className="lg:px-52 py-20 px-6 min-h-screen w-full overflow-x-hidden z-0">
+      <div id="projects" className="xl:px-52 lg:px-38 py-20 px-6 min-h-screen w-full overflow-x-hidden z-0">
         <div>
           {/* heading */}
           <h1 className="text-white font-bold sm:text-4xl text-3xl text-center sm:pb-15 pb-8">

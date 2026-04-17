@@ -19,7 +19,7 @@ const Education = () => {
 
   return (
     <>
-      <div id="education" className="lg:px-52 py-20 px-6 h-full w-full overflow-x-hidden">
+      <div id="education" className="xl:px-52 lg:px-38 py-20 px-6 h-full w-full overflow-x-hidden">
         <div>
           {/* heading */}
           <h1 className="text-white font-bold sm:text-4xl text-3xl text-center sm:pb-15 pb-8">

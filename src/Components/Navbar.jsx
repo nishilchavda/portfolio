@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <>
       {/* navbar  */}
-      <nav className="fixed w-full hidden md:flex items-center justify-between lg:px-48 px-5 py-4 text-white z-50 ">
+      <nav className="fixed w-full hidden md:flex items-center justify-between xl:px-48 lg:px-38 px-5 py-4 text-white z-50 ">
         <h1 className="text-2xl font-bold px-2">Nishil Chavda</h1>
         <ul
           className={`list-none flex items-center justify-between gap-4 select-none ${toggleMenu ? "block" : "hidden"} md:flex`}

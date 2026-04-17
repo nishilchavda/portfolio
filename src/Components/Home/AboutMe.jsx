@@ -5,7 +5,7 @@ const HeroImg =
 const AboutMe = () => {
   return (
     <>
-        <div className="lg:px-50 py-20 px-5 sm:h-screen h-full w-full" id="about">
+        <div className="xl:px-50 lg:px-40 py-20 px-5 sm:h-screen h-full w-full" id="about">
         <h1 className="text-white sm:text-4xl text-3xl font-bold text-center sm:pb-15 pb-8">
           About Me
         </h1>
