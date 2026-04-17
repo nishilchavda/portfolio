@@ -5,12 +5,12 @@ const HeroImg =
 const AboutMe = () => {
   return (
     <>
-      <div className="lg:px-50 py-20 px-5 sm:h-screen h-full w-full">
+        <div className="lg:px-50 py-20 px-5 sm:h-screen h-full w-full" id="about">
         <h1 className="text-white sm:text-4xl text-3xl font-bold text-center sm:pb-15 pb-8">
           About Me
         </h1>
         {/* for laptop and tablet  */}
-        <div className="hidden sm:flex sm:items-center sm:justify-between">
+        <div className="hidden sm:flex sm:items-center sm:justify-between sm:gap-4">
           <div className="w-2/5">
             <div className="">
               <img
@@ -43,9 +43,11 @@ const AboutMe = () => {
                 <p className="text-white"> Surat, Gujarat - 394107</p>
               </div>
             </div>
-            <button className="bg-radial from-green-800  from-1% to-green-900*2 sm:border-3 border-2 border-green-700 px-6 py-2 text-white rounded-full text-2xl font-bold sm:mt-10 mt-8">
+            <a href="" >
+              <button className="bg-radial from-green-800  from-1% to-green-900*2 sm:border-3 border-2 border-green-700 px-6 py-2 text-white rounded-full text-2xl font-bold sm:mt-10 mt-8 active:scale-95 transition-all duration-300">
               Resume
             </button>
+            </a>
           </div>
         </div>
 

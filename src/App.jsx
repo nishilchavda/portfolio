@@ -2,11 +2,6 @@ import React from "react";
 import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
-import { Route, Routes } from "react-router-dom";
-import AboutMe from "./Components/Home/AboutMe";
-import Projects from "./Components/Home/Projects";
-import Education from "./Components/Home/Education";
-import Contact from "./Components/Home/Contact";
 
 const App = () => {
   return (
@@ -22,15 +17,8 @@ const App = () => {
         {/* The Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
       </div>
-
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<AboutMe />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/education" element={<Education />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <Home/>
       <Footer />
       {/* </div> */}
     </>

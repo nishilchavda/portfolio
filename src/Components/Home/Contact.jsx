@@ -14,14 +14,14 @@ const Contact = () => {
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12">
           {/* Left Side: Contact Info */}
-          <div className="space-y-8 flex items-center justify-center">
+          <div className="space-y-8 sm:flex items-center justify-center hidden ">
             <img src="/src/Assets/contact.png" alt="" />
           </div>
 
           {/* Right Side: Contact Form */}
-          <div className="bg-transparent backdrop-blur-xl border border-slate-700/50 rounded-3xl p-4 shadow-2xl relative">
+          <div className="bg-transparent backdrop-blur-xl border-3 border-slate-700/50 rounded-3xl p-4 shadow-2xl relative">
             <form className="space-y-5">
               <div className="grid grid-cols-1 gap-5">
                 <div>
@@ -36,14 +36,14 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Full Name"
-                    className="w-full bg-slate-800/50 border border-slate-700 focus:border-blue-500 outline-none rounded-xl px-4 py-2 text-white transition-all"
+                    className="w-full bg-slate-800/50 border-3 border-slate-700/50 focus:border-blue-500 outline-none rounded-xl px-4 py-2 text-white transition-all"
                   />
                 </div>
                 <div className="space-y-2">
                   <input
                     type="email"
                     placeholder="Email Address"
-                    className="w-full bg-slate-800/50 border border-slate-700 focus:border-blue-500 outline-none rounded-xl px-4 py-2 text-white transition-all"
+                    className="w-full bg-slate-800/50 border-3 border-slate-700/50 focus:border-blue-500 outline-none rounded-xl px-4 py-2 text-white transition-all"
                   />
                 </div>
               </div>
@@ -52,7 +52,7 @@ const Contact = () => {
                 <textarea
                   rows="4"
                   placeholder="Tell me about your project..."
-                  className="w-full bg-slate-800/50 border border-slate-700 focus:border-blue-500 outline-none rounded-xl px-4 py-2 text-white transition-all resize-none"
+                  className="w-full bg-slate-800/50 border-3 border-slate-700/50 focus:border-blue-500 outline-none rounded-xl px-4 py-2 text-white transition-all resize-none"
                 ></textarea>
               </div>
 

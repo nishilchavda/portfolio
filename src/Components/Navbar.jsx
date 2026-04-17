@@ -1,22 +1,24 @@
 import { Menu } from "lucide-react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
 
   const activeStyle =
     "inset-0 w-full h-full z-0 rounded-full transition-all duration-300 shadow-[inset_0px_0px_20px_-5px_rgba(255,255,255,0.9)] bg-[rgba(255, 255, 255, 0.04)] ring-2 ring-white/60 ring-inset px-4 py-2 font-bold";
-  const inactiveStyle = "inset-0 w-full h-full z-0 rounded-full px-4 py-2 font-bold";
+  const inactiveStyle = "inset-0 w-full h-full z-0 rounded-full px-4 py-2 font-bold cursor-pointer hover:bg-[rgba(255, 255, 255, 0.04)] transition-all duration-300";
 
+  // navbar links data 
   const navLinks = [
-    { name: "Home", to: "/" },
-    { name: "About", to: "/about" },
-    { name: "Projects", to: "/projects" },
-    { name: "Education", to: "/education" },
-    { name: "Contact", to: "/contact" },
+    { name: "Home", to: "home" },
+    { name: "About", to: "about" },
+    { name: "Projects", to: "projects" },
+    { name: "Education", to: "education" },
+    { name: "Contact", to: "contact" },
   ];
 
+  // Hamburger for mobile view
   const [toggleMenu, settoggleMenu] = useState(false);
 
   const handleToggleMenu = () => {
@@ -29,15 +31,17 @@ const Navbar = () => {
       <nav className="fixed w-full hidden md:flex items-center justify-between lg:px-48 px-5 py-4 text-white z-50 ">
         <h1 className="text-2xl font-bold px-2">Nishil Chavda</h1>
         <ul
-          className={`list-none flex items-center justify-between gap-10 select-none ${toggleMenu ? "block" : "hidden"} md:flex`}
+          className={`list-none flex items-center justify-between gap-4 select-none ${toggleMenu ? "block" : "hidden"} md:flex`}
         >
           {navLinks.map((link, index) => {
             return (
               <Link
                 to={link.to}
-                onClick={() => setActive(link.name)}
-                className={link.name === active ? activeStyle : inactiveStyle}
                 key={index}
+                smooth={true}
+                spy={true}
+                className="inset-0 w-full h-full z-0 rounded-full px-4 py-2 font-bold cursor-pointer hover:bg-[rgba(255, 255, 255, 0.04)] transition-all duration-300"
+                activeClass="inset-0 w-full h-full z-0 rounded-full transition-all duration-300 shadow-[inset_0px_0px_20px_-5px_rgba(255,255,255,0.9)] bg-[rgba(255, 255, 255, 0.04)] ring-2 ring-white/60 ring-inset px-4 py-2 font-bold"
               >
                 {link.name}
               </Link>

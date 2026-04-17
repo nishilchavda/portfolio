@@ -1,3 +1,4 @@
+import { Link } from "react-scroll";
 import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 import { FiArrowUp } from "react-icons/fi";
@@ -9,9 +10,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="lg:px-52 px-5 relative mt-2 border-t border-slate-800 bg-slate-950/20 backdrop-blur-md">
+    <footer className="lg:px-48 px-5 relative mt-2 border-t border-slate-900 bg-transparent backdrop-blur-2xl">
       {/* Subtle top glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 py-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
@@ -29,26 +30,34 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="flex gap-8 text-sm font-medium text-slate-400">
-            <a href="#home" className="hover:text-blue-400 transition-colors">Home</a>
-            <a href="#projects" className="hover:text-blue-400 transition-colors">Projects</a>
-            <a href="#about" className="hover:text-blue-400 transition-colors">About</a>
-            <a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a>
+            <Link to="home" smooth={true} className="hover:text-blue-400 transition-colors">
+              Home
+            </Link>
+            <Link to="projects" smooth={true} className="hover:text-blue-400 transition-colors">
+              Projects
+            </Link>
+            <Link to="about" smooth={true} className="hover:text-blue-400 transition-colors">
+              About
+            </Link>
+            <Link to="contact" smooth={true} className="hover:text-blue-400 transition-colors">
+              Contact
+            </Link>
           </div>
 
           {/* Socials & Back to Top */}
           <div className="flex items-center gap-6">
             <div className="flex gap-4">
               <a href="#" className="text-slate-400 hover:text-white transition-all hover:scale-110">
-                <FaLinkedin size={20} />
+                <FaLinkedin size={30} />
               </a>
               <a href="#" className="text-slate-400 hover:text-blue-400 transition-all hover:scale-110">
-                <SiGithub size={20} />
+                <SiGithub size={30} />
               </a>
             </div>
             
             <button 
               onClick={scrollToTop}
-              className="p-3 bg-slate-800/50 border border-slate-700 rounded-full text-blue-400 hover:bg-blue-500 hover:text-white transition-all active:scale-90"
+              className="p-2.5 bg-slate-800/50 border border-slate-700 rounded-full text-blue-400 hover:bg-blue-500 hover:text-white transition-all active:scale-90"
               aria-label="Scroll to top"
             >
               <FiArrowUp size={20} />
