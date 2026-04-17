@@ -31,7 +31,7 @@ const SocialLinks = [
     icon: <SiGithub size={25} />,
   },
   {
-    link: "https://www.instagram.com/nishilchavda",
+    link: "https://www.instagram.com/nishil_chavda",
     name: "Instagram",
     className:
       "bg-radial cursor-pointer from-pink-600  from-1% to-pink-600*2 sm:border-3 border-2 border-pink-500 p-2 text-white rounded-full text-xl font-bold active:scale-95 transition-all duration-300",
