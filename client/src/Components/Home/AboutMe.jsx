@@ -1,6 +1,4 @@
-import React from "react";
-const HeroImg =
-  "https://i.pinimg.com/736x/3d/3b/f1/3d3bf1f13bc997907db8aa68e4ab5153.jpg";
+import profile from "../../Assets/profile.png"
 
 const AboutMe = () => {
   return (
@@ -14,8 +12,8 @@ const AboutMe = () => {
           <div className="w-2/5">
             <div className="">
               <img
-                className="w-80 h-100 object-cover rounded-2xl"
-                src={HeroImg}
+                className="w-90 h-100 object-cover rounded-2xl"
+                src={profile}
                 alt=""
               />
             </div>
@@ -55,8 +53,8 @@ const AboutMe = () => {
         <div className="md:hidden flex flex-col items-center justify-between">
           <div>
             <img
-              className="w-60 h-60 object-cover rounded-2xl pb-2"
-              src={HeroImg}
+              className="w-70 h-70 object-cover rounded-2xl pb-2"
+              src={profile}
               alt=""
             />
           </div>

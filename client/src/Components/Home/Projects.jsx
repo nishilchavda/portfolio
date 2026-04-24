@@ -45,7 +45,10 @@ const Projects = () => {
 
   return (
     <>
-      <div id="projects" className="xl:px-52 lg:px-38 py-20 px-6 min-h-screen w-full overflow-x-hidden z-0">
+      <div
+        id="projects"
+        className="xl:px-52 lg:px-38 py-20 px-6 min-h-screen w-full overflow-x-hidden z-0"
+      >
         <div>
           {/* heading */}
           <h1 className="text-white font-bold sm:text-4xl text-3xl text-center sm:pb-15 pb-8">
@@ -68,7 +71,7 @@ const Projects = () => {
                       alt="Project"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60" />
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent opacity-60" />
                   </div>
 
                   {/* Content */}
@@ -83,8 +86,7 @@ const Projects = () => {
 
                     {/* Action Buttons */}
                     <div className="flex items-center justify-end">
-                      {/* <div className="flex gap-3">
-                      // Tech Tags (Optional but adds "pro" feel)
+                      {/* <div className="flex gap-2 items-center justify-center">
                       <span className="text-[10px] px-2 py-1 bg-blue-500/10 text-blue-400 rounded-md border border-blue-500/20">
                         React
                       </span>
@@ -107,13 +109,9 @@ const Projects = () => {
                       </div>
                     </div>
                   </div>
-
-                  {/* Subtle Glow Effect */}
-                  {/* <div className="absolute -inset-px bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10" /> */}
                 </div>
               );
             })}
-            {/* Repeat for other cards... */}
           </div>
         </div>
       </div>

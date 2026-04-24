@@ -6,8 +6,8 @@ const Navbar = () => {
   const [active, setActive] = useState("Home");
 
   const activeStyle =
-    "inset-0 w-full h-full z-0 rounded-full transition-all duration-300 shadow-[inset_0px_0px_20px_-5px_rgba(255,255,255,0.9)] bg-[rgba(255, 255, 255, 0.04)] ring-2 ring-white/60 ring-inset px-4 py-2 font-bold";
-  const inactiveStyle = "inset-0 w-full h-full z-0 rounded-full px-4 py-2 font-bold cursor-pointer hover:bg-[rgba(255, 255, 255, 0.04)] transition-all duration-300";
+    "inset-0 w-full h-full z-0 rounded-full transition-all duration-300 shadow-[inset_0px_0px_20px_-5px_rgba(255,255,255,0.9)] bg-[rgba(255, 255, 255, 0.04)] ring-2 ring-white/60 ring-inset px-4 py-2 font-bold ";
+  const inactiveStyle = "inset-0 w-full h-full z-0 rounded-full px-4 py-2 font-bold cursor-pointer transition-all duration-300";
 
   // navbar links data 
   const navLinks = [
@@ -85,10 +85,11 @@ const Navbar = () => {
               {/* links  */}
 
               <ul className="flex flex-col items-center text-center justify-center gap-2 text-xl">
-                {navLinks.map((link) => {
+                {navLinks.map((link, index) => {
                   return (
                     <Link
                       to={link.to}
+                      key={index}
                       onClick={() => {
                         setActive(link.name);
                       }}

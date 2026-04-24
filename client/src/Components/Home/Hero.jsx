@@ -12,8 +12,6 @@ import { RiCodeSSlashLine } from "react-icons/ri";
 import { SiGithub, SiMongodb } from "react-icons/si";
 import { Link } from "react-scroll";
 import { TypeAnimation } from "react-type-animation";
-const HeroImg =
-  "https://media.licdn.com/dms/image/v2/D5635AQFiWzmLHBIYkA/profile-framedphoto-shrink_200_200/B56ZsQUQpWJ4AY-/0/1765505305405?e=1777053600&v=beta&t=BdkWCk9WUwOCGYxpY7oC5H3EJB3mNrBllIPsBDoIHDw";
 
 const SocialLinks = [
   {
@@ -51,11 +49,11 @@ const Hero = () => {
           {" "}
           {/* Added z-10 to keep text on top */}
           <div className="flex flex-col justify-between sm:gap-6 gap-2">
-            <h1 className="text-white font-bold lg:text-4xl xl:text-6xl md:text-5xl sm:text-6xl text-3xl">Hi!</h1>
-            <h1 className="text-white font-bold lg:text-4xl xl:text-6xl md:text-5xl sm:text-6xl text-3xl">
+            <h1 className="text-white font-bold lg:text-4xl xl:text-6xl md:text-5xl sm:text-6xl text-4xl">Hi!</h1>
+            <h1 className="text-white font-bold lg:text-4xl xl:text-6xl md:text-5xl sm:text-6xl text-4xl">
               I'm Nishil Chavda
             </h1>
-            <h1 className="text-white font-bold lg:text-3xl xl:text-5xl md:text-4xl sm:text-5xl text-2xl">
+            <h1 className="text-white font-bold lg:text-3xl xl:text-5xl md:text-4xl sm:text-5xl text-3xl">
               <TypeAnimation
                 sequence={[
                   "MERN Stack Developer",
@@ -88,21 +86,11 @@ const Hero = () => {
 
         {/* 2. Desktop Images stay here */}
         <div className="hidden sm:flex justify-center items-center h-auto sm:w-2/5">
-          <RiCodeSSlashLine className="absolute h-[500px] w-[500px] text-white/10 -rotate-12 animate-pulse duration-500" />
-          <img
-            src={HeroImg}
-            className="rounded-full xl:w-80 xl:h-80 lg:w-70 lg:h-70 md:w-60 md:h-60 object-cover"
-            alt="Hero Desktop"
-          />
+          <RiCodeSSlashLine className="h-120 w-120 text-white/40 animate-pulse duration-500" />
         </div>
 
         {/* 3. Mobile Images - Positioned relative to the WHOLE #home container */}
-        <RiCodeSSlashLine className="absolute z-0 right-0 -top-3 h-[300px] w-[300px] block sm:hidden text-white/30 -rotate-12 animate-pulse" />
-        <img
-          src={HeroImg}
-          className="absolute z-0 top-10.5 right-13.5 block sm:hidden rounded-full w-48 h-48 object-cover"
-          alt="Hero Mobile"
-        />
+        <RiCodeSSlashLine className="absolute z-0 right-5 -top-3 h-60 w-60 block sm:hidden  text-white/50 animate-pulse" />
       </div>
     </>
   );

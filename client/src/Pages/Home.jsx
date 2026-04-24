@@ -5,13 +5,14 @@ import Skill from "../Components/Home/Skill";
 import Projects from "../Components/Home/Projects";
 import Education from "../Components/Home/Education";
 import Contact from "../Components/Home/Contact";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
+import { ToastContainer } from 'react-toastify';
 
 const Home = () => {
   return (
     <>
       <Hero />
+      <ToastContainer
+      theme="dark" />
       <AboutMe />
       <Skill />
       <Projects />
