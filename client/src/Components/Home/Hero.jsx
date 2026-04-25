@@ -86,11 +86,11 @@ const Hero = () => {
 
         {/* 2. Desktop Images stay here */}
         <div className="hidden sm:flex justify-center items-center h-auto sm:w-2/5">
-          <RiCodeSSlashLine className="h-120 w-120 text-white/40 animate-pulse duration-500" />
+          <RiCodeSSlashLine className="h-120 w-120 text-white/50 animate-pulse duration-500" />
         </div>
 
         {/* 3. Mobile Images - Positioned relative to the WHOLE #home container */}
-        <RiCodeSSlashLine className="absolute z-0 right-5 -top-3 h-60 w-60 block sm:hidden  text-white/50 animate-pulse" />
+        <RiCodeSSlashLine className="absolute z-0 right-5 top-2 h-60 w-60 block sm:hidden  text-white/50 animate-pulse" />
       </div>
     </>
   );

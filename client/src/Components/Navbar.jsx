@@ -1,6 +1,7 @@
 import { Menu } from "lucide-react";
 import React, { useState } from "react";
 import { Link } from "react-scroll";
+import Home from "../Pages/Home";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");

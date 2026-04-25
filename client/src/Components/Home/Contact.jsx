@@ -25,7 +25,7 @@ const Contact = () => {
     }
     try {
       await toast.promise(
-        axios.post("http://localhost:3001/api/sendEmail", { name, email, msg }),
+        axios.post("api/sendEmail", { name, email, msg }),
         {
           pending: "🚀 Sending your message...",
           success: {
@@ -34,12 +34,12 @@ const Contact = () => {
               setEmail("");
               setMsg("");
               setActive(false);
-              return `Succes:${data.data.message}`;
+              return `Succes:${data.message}`;
             },
           },
           error: {
             render({ data }) {
-              return `Error:${data.data.message}`;
+              return `Error:${data.message}`;
             },
           },
         },
@@ -53,10 +53,10 @@ const Contact = () => {
       id="contact"
       className="min-h-screen w-full xl:px-52 lg:px-38 px-6 py-20 relative overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto">
+      <div>
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-white font-bold sm:text-4xl text-3xl mb-4">
+        <div className="text-center">
+          <h1 className="text-white font-bold sm:text-4xl text-3xl sm:pb-15 pb-5">
             Contact Me
           </h1>
         </div>
