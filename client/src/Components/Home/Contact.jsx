@@ -5,6 +5,7 @@ import { FiMail, FiPhone, FiMapPin, FiSend } from "react-icons/fi";
 import { SiGithub } from "react-icons/si";
 import axios from "axios";
 import { toast } from "react-toastify";
+import contact from "../../Assets/contact.png"
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -64,7 +65,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12">
           {/* Left Side: Contact Info */}
           <div className="space-y-8 sm:flex items-center justify-center hidden ">
-            <img src="/src/Assets/contact.png" alt="" />
+            <img src={contact} alt="" />
           </div>
 
           {/* Right Side: Contact Form */}
