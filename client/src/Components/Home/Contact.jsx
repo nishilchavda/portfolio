@@ -5,7 +5,7 @@ import { FiMail, FiPhone, FiMapPin, FiSend } from "react-icons/fi";
 import { SiGithub } from "react-icons/si";
 import axios from "axios";
 import { toast } from "react-toastify";
-import contact from "../../Assets/contact.png"
+import contact from "../../Assets/contact.png";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -17,34 +17,40 @@ const Contact = () => {
     "w-full bg-slate-800/50 border-3 border-red-500 focus:border-blue-500 outline-none rounded-xl px-4 py-2 text-white transition-all resize-none animate-pulse";
   const defaultStyle =
     "w-full bg-slate-800/50 border-3 border-slate-700/50 focus:border-blue-500 outline-none rounded-xl px-4 py-2 text-white transition-all resize-none";
+  const hideSpan = "hidden";
+  const blockSpan = "text-red-500 px-3";
+
+  const isEmailValid = (email) => {
+    return /^[A-Za-z0-9._]{3,}@[a-zA-Z]{3,}[.]{1,1}[a-zA-Z.]{2,6}$/g.test(
+      email,
+    );
+  };
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-    if (!name || !email || !msg) {
+
+    if (!name || !email || !isEmailValid(email) || !msg) {
       setActive(true);
       return;
     }
     try {
-      await toast.promise(
-        axios.post("api/sendEmail", { name, email, msg }),
-        {
-          pending: "🚀 Sending your message...",
-          success: {
-            render({ data }) {
-              setName("");
-              setEmail("");
-              setMsg("");
-              setActive(false);
-              return `Succes:${data.message}`;
-            },
-          },
-          error: {
-            render({ data }) {
-              return `Error:${data.message}`;
-            },
+      await toast.promise(axios.post("api/sendEmail", { name, email, msg }), {
+        pending: "🚀 Sending your message...",
+        success: {
+          render({ data }) {
+            setName("");
+            setEmail("");
+            setMsg("");
+            setActive(false);
+            return `Succes:${data.message}`;
           },
         },
-      );
+        error: {
+          render({ data }) {
+            return `Error:${data.message}`;
+          },
+        },
+      });
     } catch (error) {
       console.log(error);
     }
@@ -94,6 +100,12 @@ const Contact = () => {
                   />
                 </div>
                 <div className="space-y-2">
+                  <span
+                    className={active && email.length > 0 && !isEmailValid(email) ? blockSpan : hideSpan}
+                  >
+                    {active && !isEmailValid(email) ? "*Enter Valid Email Address" : ""}
+                  </span>
+
                   <input
                     type="email"
                     placeholder={
@@ -101,9 +113,16 @@ const Contact = () => {
                         ? "Please Enter Email Address"
                         : "Email Address"
                     }
-                    className={active && !email ? activeStyle : defaultStyle}
+                    className={
+                      active && (!email || !isEmailValid(email))
+                        ? activeStyle
+                        : defaultStyle
+                    }
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (active) setActive(false);
+                    }}
                   />
                 </div>
               </div>
