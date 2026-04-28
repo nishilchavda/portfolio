@@ -9,7 +9,7 @@ const App = () => {
   return (
     <>
       {/* <div className="inset-0 -z-10 h-auto w-full items-center [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"> */}
-      <div className="fixed inset-0 -z-10 h-full w-full bg-slate-950">
+      <div className="fixed inset-0 -z-10 h-[100dvh] w-full bg-slate-950">
         {/* Top radial glow (Purple) */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(139,92,246,0.3),transparent)]" />
 

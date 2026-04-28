@@ -6,11 +6,17 @@ import { SiGithub } from "react-icons/si";
 import axios from "axios";
 import { toast } from "react-toastify";
 import contact from "../../Assets/contact.png";
+import ScrollFloat from "../ui/ScrollFloat";
+import GradientText from "../ui/GradientText";
+import SpotlightCard from "../ui/SpotlightCard";
+import Magnet from "../ui/Magnet";
+import TiltedCard from "../ui/TiltedCard";
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
+  const [subject, setSubject] = useState("");
   const [active, setActive] = useState(false);
 
   const activeStyle =
@@ -29,18 +35,19 @@ const Contact = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !email || !isEmailValid(email) || !msg) {
+    if (!name || !email || !isEmailValid(email)  || !msg || !subject) {
       setActive(true);
       return;
     }
     try {
-      await toast.promise(axios.post("api/sendEmail", { name, email, msg }), {
+      await toast.promise(axios.post("api/sendEmail", { name, email, subject, msg }), {
         pending: "🚀 Sending your message...",
         success: {
           render({ data }) {
             setName("");
             setEmail("");
             setMsg("");
+            setSubject("");
             setActive(false);
             return `Succes:${data.message}`;
           },
@@ -58,30 +65,39 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="min-h-screen w-full xl:px-52 lg:px-38 px-6 py-20 relative overflow-hidden"
+      className="w-full xl:px-50 lg:px-40 md:px-20 px-6 pt-18 pb-10 sm:min-h-screen relative overflow-hidden"
     >
       <div>
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-white font-bold sm:text-4xl text-3xl sm:pb-15 pb-5">
-            Contact Me
+          <h1 className="text-white font-bold sm:text-4xl text-3xl pb-8">
+            <ScrollFloat>Contact Me</ScrollFloat>
           </h1>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12">
           {/* Left Side: Contact Info */}
           <div className="space-y-8 sm:flex items-center justify-center hidden ">
-            <img src={contact} alt="" />
+            <TiltedCard className="w-full max-w-md cursor-grab active:cursor-grabbing">
+              <img 
+                src={contact} 
+                alt="Contact Illustration" 
+                className="w-full h-auto drop-shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:drop-shadow-[0_0_50px_rgba(139,92,246,0.6)] transition-all duration-500" 
+              />
+            </TiltedCard>
           </div>
 
           {/* Right Side: Contact Form */}
-          <div className="bg-transparent backdrop-blur-xl border-3 border-slate-700/50 rounded-3xl p-4 shadow-2xl relative">
-            <form className="space-y-5">
+          <SpotlightCard 
+            className="bg-transparent backdrop-blur-xl border-3 border-slate-700/50 rounded-3xl p-4 shadow-2xl relative"
+            spotlightColor="rgba(59, 130, 246, 0.15)"
+          >
+            <form className="space-y-5 relative z-20">
               <div className="grid grid-cols-1 gap-5">
                 <div>
-                  <h1 className="text-white font-bold text-2xl p-1">
+                  <GradientText className="text-2xl pb-2 font-bold justify-start ml-1" animationSpeed={6}>
                     Get In Touch
-                  </h1>
+                  </GradientText>
                   <p className="text-white/50 font-sans text-sm p-1">
                     Have a project in mind or just want to say hi? Feel free to
                     reach out. I'm always open to discussing new projects and
@@ -128,6 +144,17 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
+                <input
+                  type="text"
+                  placeholder={
+                    active && !subject ? "Please Enter Subject" : "Subject"
+                  }
+                  className={active && !subject ? activeStyle : defaultStyle}
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+              </div>
+              <div className="space-y-2">
                 <textarea
                   rows="4"
                   placeholder={
@@ -141,15 +168,17 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button
-                className="w-full group bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] active:scale-95"
-                onClick={handelSubmit}
-              >
-                <span>Send Message</span>
-                <FiSend className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </button>
+              <Magnet padding={40} magnetStrength={3} className="w-full">
+                <button
+                  className="w-full group bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] active:scale-95"
+                  onClick={handelSubmit}
+                >
+                  <span>Send Message</span>
+                  <FiSend className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </button>
+              </Magnet>
             </form>
-          </div>
+          </SpotlightCard>
         </div>
       </div>
     </div>

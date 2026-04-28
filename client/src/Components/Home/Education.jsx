@@ -1,5 +1,8 @@
 import React from "react";
 import { IoSchool } from "react-icons/io5";
+import ScrollFloat from "../ui/ScrollFloat";
+import SpotlightCard from "../ui/SpotlightCard";
+import ShinyText from "../ui/ShinyText";
 
 const Education = () => {
   const educationData = [
@@ -28,12 +31,12 @@ const Education = () => {
     <>
       <div
         id="education"
-        className="xl:px-52 lg:px-38 py-20 px-6 h-full w-full overflow-x-hidden"
+        className="w-full xl:px-50 lg:px-40 md:px-20 px-6 pt-18 pb-10 sm:min-h-screen overflow-hidden"
       >
         <div>
           {/* heading */}
-          <h1 className="text-white font-bold sm:text-4xl text-3xl text-center sm:pb-15 pb-8">
-            My Education
+          <h1 className="text-white font-bold sm:text-4xl text-3xl text-center pb-8">
+            <ScrollFloat>My Education</ScrollFloat>
           </h1>
 
           {/* education container */}
@@ -42,25 +45,28 @@ const Education = () => {
               <div key={index} className="mb-12 ml-8 relative">
                 {/* Timeline Icon Dot */}
                 {/* 4. Changed -left-[50px] to -left-[45px] for better centering on the line */}
-                <span className="absolute -left-[50px] top-0 bg-blue-500 p-2 rounded-full text-white shadow-[0_0_15px_rgba(59,130,246,0.5)] z-10">
+                <span className="absolute -left-12.5 top-0 bg-blue-500 p-2 rounded-full text-white shadow-[0_0_15px_rgba(59,130,246,0.5)] z-10">
                   <IoSchool size={20} />
                 </span>
 
                 {/* Card */}
-                <div className="bg-transparent backdrop-blur-xl border-3 border-slate-800 sm:p-6 p-4 rounded-2xl hover:border-blue-500/50 transition-all duration-300 group shadow-xl">
-                  <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">
-                    {item.duration}
+                <SpotlightCard 
+                  className="bg-transparent backdrop-blur-xl border-3 border-slate-800 sm:p-6 p-4 rounded-2xl hover:border-blue-500/50 transition-all duration-300 group shadow-xl relative z-20"
+                  spotlightColor="rgba(59, 130, 246, 0.15)"
+                >
+                  <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase inline-block">
+                    <ShinyText text={item.duration} disabled={false} speed={3} className="" color="#60a5fa" shineColor="#ffffff" />
                   </span>
-                  <h3 className="sm:text-2xl text-xl font-bold text-white mt-2 group-hover:text-blue-400 transition-colors">
+                  <h3 className="sm:text-2xl text-xl font-bold text-white mt-2 group-hover:text-blue-400 transition-colors relative z-20">
                     {item.degree}
                   </h3>
-                  <p className="text-slate-300 font-medium mt-1 text-sm sm:text-base">
+                  <p className="text-slate-300 font-medium mt-1 text-sm sm:text-base relative z-20">
                     {item.institution}
                   </p>
-                  <p className="text-slate-400 mt-4 leading-relaxed text-sm sm:text-base">
+                  <p className="text-slate-400 mt-4 leading-relaxed text-sm sm:text-base relative z-20">
                     {item.desc}
                   </p>
-                </div>
+                </SpotlightCard>
               </div>
             ))}
           </div>

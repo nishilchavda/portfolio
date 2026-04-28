@@ -1,1 +1,25 @@
 @import 'tailwindcss';
+
+.shiny-text-animation {
+  background: linear-gradient(
+    120deg,
+    #b5b5b5 40%,
+    #ffffff 50%,
+    #b5b5b5 60%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+body {
+  background-color: #020617; /* Matches Tailwind slate-950 to hide overscroll white space */
+}

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { FaBookOpen, FaEye, FaTimes } from "react-icons/fa";
 import { MdOpenInNew } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
+import ScrollFloat from "../ui/ScrollFloat";
+import SpotlightCard from "../ui/SpotlightCard";
+import ShinyText from "../ui/ShinyText";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -42,12 +45,12 @@ const Projects = () => {
     <>
       <div
         id="projects"
-        className="xl:px-50 lg:px-38 py-20 px-6 min-h-screen w-full overflow-x-hidden z-0"
+        className="w-full xl:px-50 lg:px-40 md:px-20 px-6 pt-18 pb-10 sm:min-h-screen overflow-hidden z-0"
       >
         <div>
           {/* heading */}
-          <h1 className="text-white font-bold sm:text-4xl text-3xl text-center sm:pb-15 pb-8">
-            My Projects
+          <h1 className="text-white font-bold sm:text-4xl text-3xl text-center pb-8">
+            <ScrollFloat>My Projects</ScrollFloat>
           </h1>
           {/* projects grid box  */}
 
@@ -55,9 +58,10 @@ const Projects = () => {
             {/* Project Card */}
             {ProjectData.map((project, index) => {
               return (
-                <div
+                <SpotlightCard
                   key={index}
                   className="group relative bg-slate-900/40 backdrop-blur-xl border-3 border-slate-700/50 hover:border-blue-500 transition-all duration-500 rounded-3xl overflow-hidden shadow-2xl"
+                  spotlightColor="rgba(59, 130, 246, 0.15)"
                 >
                   {/* Image Container with Overlay */}
                   <div className="relative overflow-hidden aspect-video">
@@ -98,15 +102,15 @@ const Projects = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex items-end justify-between">
+                    <div className="flex items-end justify-between relative z-20">
                       <button
                         onClick={() => setSelectedProject(project)}
                         className=" flex items-center justify-center gap-2 p-2.5 rounded-xl bg-radial from-gray-800 from-1% to-gray-900 border-3 border-slate-700/50 group-hover:border-white text-white transition-all duration-500 active:scale-90"
                       >
-                        <FaBookOpen size={16} /> Case Study
+                        <FaBookOpen size={16} /> <ShinyText text="Case Study" disabled={false} speed={3} className="text-sm font-medium" />
                       </button>
 
-                      <div className="flex gap-2 items-center justify-center">
+                      <div className="flex gap-2 items-center justify-center relative z-20">
                         <a href={project.github} target="_blank">
                           <button className="p-2.5 rounded-xl bg-radial from-gray-800 from-1% to-gray-900 border-3 border-slate-700/50 group-hover:border-white text-white transition-all duration-500 active:scale-90">
                             <SiGithub className="h-5 w-5" />
@@ -120,7 +124,7 @@ const Projects = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </SpotlightCard>
               );
             })}
           </div>

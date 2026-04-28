@@ -17,10 +17,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, msg } = req.body;
+    const { name, email, subject, msg } = req.body;
 
     // 2. Input Validation
-    if (!name || !email || !msg) {
+    if (!name || !email || !subject || !msg) {
       return res.status(400).json({
         success: false,
         message: "Please Provide all Fields",
@@ -50,7 +50,11 @@ export default async function handler(req, res) {
               <p style="margin:0 0 6px;color:#6b7280;font-size:13px;font-weight:600;text-transform:uppercase;">Email</p>
               <p style="margin:0;color:#111827;font-size:16px;">${email}</p>
             </div>
-            <div>
+            <div style="margin-bottom:16px;">
+              <p style="margin:0 0 6px;color:#6b7280;font-size:13px;font-weight:600;text-transform:uppercase;">Subject</p>
+              <p style="margin:0;color:#111827;font-size:16px;">${subject}</p>
+            </div>
+            <div style="margin-bottom:16px;">
               <p style="margin:0 0 6px;color:#6b7280;font-size:13px;font-weight:600;text-transform:uppercase;">Message</p>
               <div style="background-color:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:16px;color:#111827;font-size:15px;line-height:1.6;">${msg}</div>
             </div>

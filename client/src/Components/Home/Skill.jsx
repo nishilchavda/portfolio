@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { BiLogoMongodb, BiLogoTailwindCss } from "react-icons/bi";
 import { BsClaude } from "react-icons/bs";
 import {
@@ -35,6 +35,12 @@ import {
 } from "react-icons/si";
 import { GoCopilot } from "react-icons/go";
 import { VscVscode } from "react-icons/vsc";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { motion as Motion } from "framer-motion";
+import ScrollFloat from "../ui/ScrollFloat";
+import Magnet from "../ui/Magnet";
+import SpotlightCard from "../ui/SpotlightCard";
 
 const Skill = () => {
   const ActiveTab =
@@ -43,6 +49,7 @@ const Skill = () => {
     "bg-transparent sm:px-6 px-4 py-2 text-white rounded-full text-lg font-bold cursor-pointer hover:bg-[rgba(255, 255, 255, 0.04)] transition-all active:scale-95 select-none";
 
   const [active, setActive] = useState("Frontend");
+  const containerRef = useRef(null);
 
   const TabName = [
     { name: "Frontend", id: 1 },
@@ -95,57 +102,64 @@ const Skill = () => {
     return toolsSkills;
   };
 
-  return (
-    <>
-      <div
-        id="skill"
-        className="xl:px-50 lg:px-34 py-20 px-0 sm:h-screen h-full w-full"
-      >
-        <div>
-          {/* heading  */}
-          <h1 className="text-white font-bold sm:text-4xl text-3xl text-center sm:pb-15 pb-8">
-            My Skills
-          </h1>
-          {/* toggle button for change tab */}
-          <div className="flex justify-center items-center">
-            <div className="flex justify-between items-center sm:gap-4 gap mb-2 bg-transparent backdrop-blur-3xl border-slate-700 border-3 w-max h-max rounded-full p-2">
-              {TabName.map((tab, index) => {
-                return (
-                  <button
-                    aria-selected={tab.name === active}
-                    role="tab"
-                    className={tab.name === active ? ActiveTab : DefaultTab}
-                    onClick={() => setActive(tab.name)}
-                    key={index}
-                  >
-                    {tab.name}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+  useGSAP(() => {
+    gsap.fromTo(
+      ".skill-card",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" }
+    );
+  }, { dependencies: [active], scope: containerRef });
 
-          {/* skills in boxes  */}
-          <div className="p-2">
-            <div className="w-full h-full bg-transparent backdrop-blur-2xl rounded-4xl border-slate-700 border-3">
-              <div className="grid sm:grid-cols-5 grid-cols-3 justify-evenly items-center gap-2">
-                {getSkills().map((skill, index) => (
-                  <div
-                    className="p-4 font-bold sm:text-xl text-sm rounded-3xl flex flex-col items-center gap-2"
-                    key={index}
-                  >
-                    <skill.icon
-                      className={skill.color + " sm:text-6xl text-5xl"}
+  return (
+    <div id="skill" className="w-full xl:px-50 lg:px-40 md:px-20 px-6 pt-18 pb-10 sm:min-h-screen overflow-hidden">
+      <div>
+        <h1 className="text-white font-bold sm:text-4xl text-3xl text-center pb-8">
+          <ScrollFloat>My Skills</ScrollFloat>
+        </h1>
+
+        {/* Toggle buttons */}
+        <div className="flex justify-center items-center">
+           <div className="flex justify-between items-center sm:gap-2 gap-1 mb-2 bg-slate-900/40 backdrop-blur-3xl border-slate-700 border-3 w-max h-max rounded-full p-2">
+             {TabName.map((tab, index) => (
+                <button
+                  key={index}
+                  aria-selected={tab.name === active}
+                  role="tab"
+                  className={`relative cursor-pointer sm:px-6 px-4 py-2 rounded-full sm:text-lg text-sm font-bold transition-colors select-none ${
+                    tab.name === active ? "text-white" : "text-slate-400 hover:text-white hover:bg-white/5"
+                  }`}
+                  onClick={() => setActive(tab.name)}
+                >
+                  {tab.name === active && (
+                    <Motion.div
+                      layoutId="active-tab-indicator"
+                      className="absolute inset-0 bg-radial from-green-800 to-green-900 ring-2 ring-green-700 rounded-full shadow-[0_0_15px_rgba(34,197,94,0.3)] z-0"
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
                     />
-                    <h1 className="text-white">{skill.name}</h1>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+                  )}
+                  <span className="relative z-10">{tab.name}</span>
+                </button>
+             ))}
+           </div>
         </div>
+
+        {/* Animated Skills Grid */}
+        <SpotlightCard className="w-full h-full bg-transparent backdrop-blur-2xl rounded-4xl border-slate-700 border-3 mt-8 p-4" spotlightColor="rgba(59, 130, 246, 0.15)">
+          <div ref={containerRef} className="grid sm:grid-cols-5 grid-cols-3 justify-evenly items-center gap-4">
+            {getSkills().map((skill, index) => (
+              <Magnet key={index} padding={40} magnetStrength={4} className="flex justify-center">
+                <div
+                  className="skill-card p-4 font-bold sm:text-xl text-sm rounded-3xl flex flex-col items-center gap-2 transition-colors hover:bg-slate-800/50 cursor-pointer"
+                >
+                  <skill.icon className={skill.color + " sm:text-6xl text-5xl drop-shadow-xl"} />
+                  <h1 className="text-white text-center text-xs sm:text-sm">{skill.name}</h1>
+                </div>
+              </Magnet>
+            ))}
+          </div>
+        </SpotlightCard>
       </div>
-    </>
+    </div>
   );
 };
 
