@@ -4,7 +4,14 @@ import { IoSchool } from "react-icons/io5";
 const Education = () => {
   const educationData = [
     {
-      institution: "Sutex Bank College of Computer Applications and Science | VNSGU",
+      institution: "LaMinds",
+      degree: "Web Developer Internship",
+      duration: "DEC 2025 - MAY 2026",
+      desc: "Gained hands-on experience in building responsive web applications, working with real-world APIs, and collaborating in a development team environment.",
+    },
+    {
+      institution:
+        "Sutex Bank College of Computer Applications and Science | VNSGU",
       degree: "Bachelor of Computer Applications",
       duration: "2023 - 2026",
       desc: "Currently pursuing a degree in computer applications with a focus on software development and database management.",
@@ -19,11 +26,14 @@ const Education = () => {
 
   return (
     <>
-      <div id="education" className="xl:px-52 lg:px-38 py-20 px-6 h-full w-full overflow-x-hidden">
+      <div
+        id="education"
+        className="xl:px-52 lg:px-38 py-20 px-6 h-full w-full overflow-x-hidden"
+      >
         <div>
           {/* heading */}
           <h1 className="text-white font-bold sm:text-4xl text-3xl text-center sm:pb-15 pb-8">
-            My Education    
+            My Education
           </h1>
 
           {/* education container */}

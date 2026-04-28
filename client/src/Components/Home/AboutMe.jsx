@@ -1,9 +1,13 @@
-import profile from "../../Assets/profile.png"
+import profile from "../../Assets/profile.png";
+import resume from "../../Assets/cv-nishil.pdf";
 
 const AboutMe = () => {
   return (
     <>
-        <div className="xl:px-50 lg:px-40 py-20 px-5 sm:h-screen h-full w-full" id="about">
+      <div
+        className="xl:px-50 lg:px-40 py-20 px-5 sm:h-screen h-full w-full"
+        id="about"
+      >
         <h1 className="text-white sm:text-4xl text-3xl font-bold text-center sm:pb-15 pb-8">
           About Me
         </h1>
@@ -41,10 +45,10 @@ const AboutMe = () => {
                 <p className="text-white"> Surat, Gujarat - 394107</p>
               </div>
             </div>
-            <a href="" >
+            <a href={resume} download="cv-nishil.pdf">
               <button className="bg-radial from-green-800  from-1% to-green-900*2 sm:border-3 border-2 border-green-700 px-6 py-2 text-white rounded-full text-2xl font-bold sm:mt-10 mt-8 active:scale-95 transition-all duration-300">
-              Resume
-            </button>
+                Resume
+              </button>
             </a>
           </div>
         </div>
@@ -85,9 +89,11 @@ const AboutMe = () => {
                   <p className="text-white"> Surat, Gujarat - 394107</p>
                 </div>
 
-                <button className="bg-radial from-green-800  from-1% to-green-900*2 sm:border-3 border-2 border-green-700 px-3 py-1 text-white rounded-full text-xl font-bold mt-4">
-                  Resume
-                </button>
+                <a href={resume} download="cv-nishil.pdf">
+                  <button className="bg-radial from-green-800  from-1% to-green-900*2 sm:border-3 border-2 border-green-700 px-3 py-1 text-white rounded-full text-xl font-bold mt-4">
+                    Resume
+                  </button>
+                </a>
               </div>
             </div>
           </div>

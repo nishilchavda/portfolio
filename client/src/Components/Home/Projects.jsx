@@ -1,53 +1,48 @@
-import React from "react";
-import { FaEye } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaBookOpen, FaEye, FaTimes } from "react-icons/fa";
 import { MdOpenInNew } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
   const ProjectData = [
-    {
-      title: "Project One",
-      desc: "A high-performance web application built with modern architecture. Focusing on scalability and seamless user experience.",
-      github: "",
-      live: "",
+  {
+    image: "https://github.com/nishilchavda/Airstro/raw/main/frontend/src/assets/homepage.png",
+    title: "Airstro",
+    desc: "A streamlined flight booking platform built with the MERN stack, offering users a seamless interface for searching, selecting, and managing flight reservations.",
+    caseStudy: {
+      challenge:
+        "Simplifying the flight booking process to reduce user friction while ensuring real-time data accuracy for flight availability and pricing.",
+      solution:
+        "Developed a responsive booking engine using the MERN stack that handles dynamic search queries, secure user authentication, and reservation state management.",
+      results: "Successfully created an intuitive booking flow that improves search efficiency and provides a smooth, reliable experience for travelers.",
     },
-    {
-      title: "Project One",
-      desc: "A high-performance web application built with modern architecture. Focusing on scalability and seamless user experience.",
-      github: "",
-      live: "",
+    techStack: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    github: "https://github.com/nishilchavda/Airstro",
+    live: "https://airstro.onrender.com",
+  },
+  {
+    image: "https://github.com/nishilchavda/SpoCars/raw/main/img/homepage.png",
+    title: "Spocars",
+    desc: "A high-performance automotive showcase website platform designed to present high-end vehicle collections with a focus on visual impact and performance.",
+    caseStudy: {
+      challenge:
+        "Need for a lightweight, visually engaging interface to display automotive photography and specifications without heavy load times or performance bottlenecks.",
+      solution:
+        "Leveraged a Bootstrap-based responsive framework to create a mobile-first, clean UI, emphasizing high-quality imagery and fast rendering.",
+      results: "Delivered a performant, visually cohesive site that highlights vehicle aesthetics while maintaining a professional and user-friendly browsing experience.",
     },
-    {
-      title: "Project One",
-      desc: "A high-performance web application built with modern architecture. Focusing on scalability and seamless user experience.",
-      github: "",
-      live: "",
-    },
-    {
-      title: "Project One",
-      desc: "A high-performance web application built with modern architecture. Focusing on scalability and seamless user experience.",
-      github: "",
-      live: "",
-    },
-    {
-      title: "Project One",
-      desc: "A high-performance web application built with modern architecture. Focusing on scalability and seamless user experience.",
-      github: "",
-      live: "",
-    },
-    {
-      title: "Project One",
-      desc: "A high-performance web application built with modern architecture. Focusing on scalability and seamless user experience.",
-      github: "",
-      live: "",
-    },
-  ];
+    techStack: ["HTML", "CSS", "Bootstrap"],
+    github: "https://github.com/nishilchavda/SpoCars",
+    live: "https://spocars-website.vercel.app/",
+  },
+];
 
   return (
     <>
       <div
         id="projects"
-        className="xl:px-52 lg:px-38 py-20 px-6 min-h-screen w-full overflow-x-hidden z-0"
+        className="xl:px-50 lg:px-38 py-20 px-6 min-h-screen w-full overflow-x-hidden z-0"
       >
         <div>
           {/* heading */}
@@ -56,7 +51,7 @@ const Projects = () => {
           </h1>
           {/* projects grid box  */}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
+          <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {/* Project Card */}
             {ProjectData.map((project, index) => {
               return (
@@ -67,11 +62,11 @@ const Projects = () => {
                   {/* Image Container with Overlay */}
                   <div className="relative overflow-hidden aspect-video">
                     <img
-                      src="https://i.pinimg.com/736x/a6/b4/17/a6b4177bb2f9bc580c381fd9d488359f.jpg"
+                      src={project.image}
                       alt="Project"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent opacity-60" />
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent opacity-40" />
                   </div>
 
                   {/* Content */}
@@ -84,24 +79,40 @@ const Projects = () => {
                       {project.desc}
                     </p>
 
+                    <div className="pb-3">
+                      <div className="flex flex-wrap items-center justify-start gap-2">
+                        {project.techStack.map((tech) => (
+                          <span
+                            key={tech}
+                            className=" flex items-center gap-1.5 px-2 py-1 rounded-xl text-sm font-medium bg-slate-800/50 text-white border-3 border-slate-700/50"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {/* {project.techStack.length > 3 && (
+                          <span className="text-xs text-slate-500 self-center">
+                            +{project.techStack.length - 3} more
+                          </span>
+                        )} */}
+                      </div>
+                    </div>
+
                     {/* Action Buttons */}
-                    <div className="flex items-center justify-end">
-                      {/* <div className="flex gap-2 items-center justify-center">
-                      <span className="text-[10px] px-2 py-1 bg-blue-500/10 text-blue-400 rounded-md border border-blue-500/20">
-                        React
-                      </span>
-                      <span className="text-[10px] px-2 py-1 bg-purple-500/10 text-purple-400 rounded-md border border-purple-500/20">
-                        Tailwind
-                      </span>
-                    </div> */}
+                    <div className="flex items-end justify-between">
+                      <button
+                        onClick={() => setSelectedProject(project)}
+                        className=" flex items-center justify-center gap-2 p-2.5 rounded-xl bg-radial from-gray-800 from-1% to-gray-900 border-3 border-slate-700/50 group-hover:border-white text-white transition-all duration-500 active:scale-90"
+                      >
+                        <FaBookOpen size={16} /> Case Study
+                      </button>
 
                       <div className="flex gap-2 items-center justify-center">
-                        <a href={project.github}>
+                        <a href={project.github} target="_blank">
                           <button className="p-2.5 rounded-xl bg-radial from-gray-800 from-1% to-gray-900 border-3 border-slate-700/50 group-hover:border-white text-white transition-all duration-500 active:scale-90">
                             <SiGithub className="h-5 w-5" />
                           </button>
                         </a>
-                        <a href={project.live}>
+                        <a href={project.live} target="_blank">
                           <button className="p-2.5 rounded-xl bg-radial from-green-800  from-1% to-green-900*2 border-3 border-slate-700/50 group-hover:border-green-500 text-white transition-all duration-500 active:scale-90">
                             <MdOpenInNew className="h-5 w-5" />
                           </button>
@@ -115,6 +126,40 @@ const Projects = () => {
           </div>
         </div>
       </div>
+
+      {/* Case Study Modal Overlay */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-transparent backdrop-blur-md">
+          <div className="bg-slate-900 border-3 border-slate-700/50 p-8 rounded-3xl max-w-2xl w-full relative">
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-4 right-4 text-white"
+            >
+              <FaTimes size={24} className="active:scale-95 transition-all duration-75" />
+            </button>
+            <h2 className="text-3xl font-bold text-white mb-6">
+              {selectedProject.title} - Case Study
+            </h2>
+
+            <div className="space-y-4 text-slate-300">
+              <h4 className="text-blue-400 font-bold uppercase text-sm">
+                The Challenge
+              </h4>
+              <p>{selectedProject.caseStudy.challenge}</p>
+
+              <h4 className="text-blue-400 font-bold uppercase text-sm">
+                The Solution
+              </h4>
+              <p>{selectedProject.caseStudy.solution}</p>
+
+              <h4 className="text-blue-400 font-bold uppercase text-sm">
+                Results
+              </h4>
+              <p>{selectedProject.caseStudy.results}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
