@@ -119,7 +119,7 @@ const Skill = () => {
 
         {/* Toggle buttons */}
         <div className="flex justify-center items-center">
-           <div className="flex justify-between items-center sm:gap-2 gap-1 mb-2 bg-slate-900/40 backdrop-blur-3xl border-slate-700 border-3 w-max h-max rounded-full p-2">
+           <div className="flex justify-between items-center sm:gap-2 gap-1 mb-2 bg-slate-900/40 backdrop-blur-3xl border-slate-700 sm:border-3 border-2 w-max h-max rounded-full p-2">
              {TabName.map((tab, index) => (
                 <button
                   key={index}
@@ -144,7 +144,7 @@ const Skill = () => {
         </div>
 
         {/* Animated Skills Grid */}
-        <SpotlightCard className="w-full h-full bg-transparent backdrop-blur-2xl rounded-4xl border-slate-700 border-3 mt-8 p-4" spotlightColor="rgba(59, 130, 246, 0.15)">
+        <SpotlightCard className="w-full h-full bg-transparent backdrop-blur-2xl rounded-4xl border-slate-700 sm:border-3 border-2 mt-8 py-6" spotlightColor="rgba(59, 130, 246, 0.15)">
           <div ref={containerRef} className="grid sm:grid-cols-5 grid-cols-3 justify-evenly items-center gap-4">
             {getSkills().map((skill, index) => (
               <Magnet key={index} padding={40} magnetStrength={4} className="flex justify-center">
